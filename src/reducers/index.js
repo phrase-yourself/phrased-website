@@ -1,7 +1,14 @@
 import { combineReducers } from 'redux'
 import * as Actions from '../actions'
 
-const phraseReducer = (state = {}, _action) => state
+const phraseReducer = (state = {}, action) => {
+  switch (action.type) {
+    case Actions.NEW_PHRASE:
+      return action.payload
+    default:
+      return state
+  }
+}
 
 const settingsReducer = (state = {}, _action) => state
 
