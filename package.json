@@ -6,7 +6,8 @@
   "scripts": {
     "watch-css": ".bin/wt watch -b build style/main.scss",
     "watch-js": "watchify -t [ babelify --presets [ es2015 react ] ] src/index.jsx -o build/bundle.js -dv",
-    "watch": "npm run watch-css | npm run watch-js",
+    "watch": "npm run watch-css | npm run watch-js | npm run serve",
+    "serve": "http-server -a localhost -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +26,7 @@
     "babel-preset-react": "^6.24.1",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
+    "http-server": "^0.10.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
