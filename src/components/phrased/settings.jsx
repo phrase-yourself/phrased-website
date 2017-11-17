@@ -8,11 +8,19 @@ class Button extends React.Component {
 
     return `${baseClass} ${activeClass}`
   }
+
+  onClick () {
+    if (this.props.onClick) {
+      return this.props.onClick(this.props.value || this.props.label)
+    }
+  }
+
   render () {
     return (
       <input
         className={this.name()}
-        value={this.props.value}
+        value={this.props.label}
+        onClick={this.onClick.bind(this)}
         type='button' />
     )
   }
@@ -23,8 +31,28 @@ class PhrasedSettings extends React.Component {
     return this.props.settings
   }
 
+  selection () {
+    return this.props.selection
+  }
+
   availableWordlists () {
-    return this.settings().wordlists[this.settings().selectedLanguage]
+    return this.settings().wordlists[this.selection().language]
+  }
+
+  switchLanguage (shortCode) {
+    this.props.switchLanguage(shortCode)
+  }
+
+  switchWordlist (name) {
+    this.props.switchWordlist(name)
+  }
+
+  isWordlistActive (i, wordlist) {
+    if (this.selection().wordlist !== undefined) {
+      return wordlist.name === this.selection().wordlist
+    } else {
+      return i === 0
+    }
   }
 
   render () {
@@ -35,17 +63,21 @@ class PhrasedSettings extends React.Component {
             <h4>Language</h4>
             {this.settings().languages.map((lang) =>
               <Button
-                active={lang.shortCode === this.settings().selectedLanguage}
-                value={lang.name}
+                active={lang.shortCode === this.selection().language}
+                label={lang.name}
+                value={lang.shortCode}
+                onClick={this.switchLanguage.bind(this)}
                 key={lang.shortCode} />
             )}
           </div>
           <div className='four columns'>
             <h4>Wordlist</h4>
-            {this.availableWordlists().map((wordlist) =>
+            {this.availableWordlists().map((wordlist, i) =>
               <Button
-                active={wordlist.name === this.settings().selectedWordlist}
-                value={wordlist.summary}
+                active={this.isWordlistActive(i, wordlist)}
+                label={wordlist.summary}
+                value={wordlist.name}
+                onClick={this.switchWordlist.bind(this)}
                 key={wordlist.name} />
             )}
           </div>
@@ -53,24 +85,24 @@ class PhrasedSettings extends React.Component {
             <h4>Settings</h4>
             <div className='u-full-width'>
               <label>Phrase Length</label>
-              <Button small value={2} />
-              <Button small value={3} />
-              <Button small value={4} />
-              <Button small value={5} active />
-              <Button small value={6} />
-              <Button small value={7} />
+              <Button small label={2} />
+              <Button small label={3} />
+              <Button small label={4} />
+              <Button small label={5} active />
+              <Button small label={6} />
+              <Button small label={7} />
             </div>
             <div className='u-full-width'>
               <label>Separator</label>
-              <Button small value='.' />
-              <Button small value=',' />
-              <Button small value='" "' active />
-              <Button small value='_' />
+              <Button small label='.' />
+              <Button small label=',' />
+              <Button small label='" "' active />
+              <Button small label='_' />
             </div>
             <div className='u-full-width'>
               <label>Additions</label>
-              <Button small value='Add Numbers' />
-              <Button small value='Add Symbols' />
+              <Button small label='Add Numbers' />
+              <Button small label='Add Symbols' />
             </div>
           </div>
         </div>

@@ -1,13 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import PhrasedHeader from '../components/phrased/header.jsx'
 import PhrasedSettings from '../components/phrased/settings.jsx'
+import * as PhrasedActions from '../actions/'
 
-const Phrased = ({phrase, settings}) => (
+const Phrased = ({phrase, selection, settings, switchLanguage, switchWordlist}) => (
   <div className='phrased'>
     <PhrasedHeader phrase={phrase} />
-    <PhrasedSettings settings={settings} />
+    <PhrasedSettings selection={selection} settings={settings} switchLanguage={switchLanguage} switchWordlist={switchWordlist} />
   </div>
 )
 
@@ -17,7 +19,7 @@ const languages = {
 }
 
 const mapSettings = (settings) => {
-  return Object.assign(settings, {
+  return Object.assign({}, settings, {
     languages: settings.languages.map((shortCode) => {
       return {
         name: languages[shortCode],
@@ -28,11 +30,15 @@ const mapSettings = (settings) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.currentPhrase)
   return {
     phrase: state.currentPhrase,
-    settings: mapSettings(state.settings)
+    settings: mapSettings(state.settings),
+    selection: state.selection
   }
 }
 
-export default connect(mapStateToProps)(Phrased)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(PhrasedActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, undefined, {pure: false})(Phrased)
