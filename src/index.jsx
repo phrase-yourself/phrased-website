@@ -1,8 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Test from './test.jsx'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+
+import Phrased from './containers/phrased.jsx'
+
+const store = createStore(() => {
+  return {
+    currentPhrase: 'prosit moor hemd august nadeln'
+  }
+})
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log(document.getElementById('app'))
-  ReactDOM.render(<Test/>, document.getElementById('app'))
+  ReactDOM.render(
+    <Provider store={store}>
+      <Phrased />
+    </Provider>,
+    document.getElementById('app')
+  )
 })
