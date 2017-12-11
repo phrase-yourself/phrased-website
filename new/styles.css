@@ -1,16 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans');
+
 body {
-  background-color: lightblue;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 
-section.container {
+.container {
   max-width: 800px;
   margin: 0 auto;
-  border: 1px solid darkblue;
   display: flex;
   flex-wrap: wrap;
 }
 
+.container h1 {
+  flex-basis: 100%;
+  margin: 4rem 0;
+
+  text-align: center;
+  font-size: 3rem;
+}
+
 phrased-passphrase {
+  font-family: 'Inconsolata', monospace;
   flex-basis: 100%;
   flex-grow: 3;
 }

@@ -5,7 +5,6 @@ class Passphrase extends window.HTMLElement {
     let template = document.getElementById('phrased-passphrase')
     let content = document.importNode(template.content, true)
     shadow.appendChild(content)
-    console.log('passphrase, yo!')
   }
 }
 
