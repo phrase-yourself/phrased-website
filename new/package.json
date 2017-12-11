@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/phrase-yourself/phrased-website/issues"
   },
-  "homepage": "https://github.com/phrase-yourself/phrased-website#readme"
+  "homepage": "https://github.com/phrase-yourself/phrased-website#readme",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs"
+  }
 }

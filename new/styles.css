@@ -1,0 +1,20 @@
+body {
+  background-color: lightblue;
+}
+
+section.container {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid darkblue;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+phrased-passphrase {
+  flex-basis: 100%;
+  flex-grow: 3;
+}
+
+phrased-language-picker, phrased-dictionary-picker, phrased-phrase-settings {
+  flex-grow: 1;
+}
