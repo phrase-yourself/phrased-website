@@ -1,4 +1,4 @@
-class Passphrase extends window.HTMLElement {
+class PhrasedPassphrase extends window.HTMLElement {
   constructor () {
     super()
     let shadow = this.attachShadow({mode: 'open'})
@@ -8,4 +8,4 @@ class Passphrase extends window.HTMLElement {
   }
 }
 
-window.customElements.define('phrased-passphrase', Passphrase)
+window.customElements.define('phrased-passphrase', PhrasedPassphrase)

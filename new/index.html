@@ -4,6 +4,7 @@
   <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="stylesheet" href="styles.css">
   <link rel="import" href="components/phrased-passphrase/phrased-passphrase.html">
+  <link rel="import" href="components/phrased-language-picker/phrased-language-picker.html">
   <title>Web Component</title>
 </head>
 
@@ -12,9 +13,16 @@
     <h1>Tired of boring passwords?</h1>
     <phrased-passphrase></phrased-passphrase>
     <phrased-language-picker></phrased-language-picker>
-    <phrased-dictionary-picker></phrased-dictionary-picker>
-    <phrased-phrase-settings></phrased-phrase-settings>
+    <phrased-language-picker></phrased-language-picker>
+    <phrased-language-picker></phrased-language-picker>
+    <!-- <phrased-dictionary-picker></phrased-dictionary-picker>
+    <phrased-phrase-settings></phrased-phrase-settings> -->
   </section>
+  <script>
+    window.addEventListener('WebComponentsReady', function () {
+      console.log('lol')
+    })
+  <script>
 </body>
 
 </html>
