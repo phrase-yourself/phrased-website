@@ -4,7 +4,7 @@
   "description": "https://phrased.org/",
   "main": "index.js",
   "scripts": {
-    "watch": "npm run watch-css | npm run watch-js | npm run serve",
+    "watch": "browser-sync start --server --no-ui --no-open --no-notify --no-inject-changes --index index.html --files=**/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +17,9 @@
     "url": "https://github.com/phrase-yourself/phrased-website/issues"
   },
   "homepage": "https://github.com/phrase-yourself/phrased-website#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.13"
+  },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs"
   }
