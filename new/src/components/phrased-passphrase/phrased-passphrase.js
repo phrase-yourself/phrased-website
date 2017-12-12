@@ -1,16 +1,31 @@
-let template = () => {
+let template = (phrase) => {
   return `
     <div class="phrased-passphrase-phrase">
-      <span>zieren wirke herab plump lassen lampe stift 286</span>
+      <span>${phrase}</span>
     </div>
   `
 }
 
 class PhrasedPassphrase extends window.HTMLElement {
+  static get observedAttributes () {
+    return ['phrase']
+  }
+
   constructor () {
     super()
-    let shadow = this.attachShadow({mode: 'open'})
-    shadow.innerHTML = template()
+    this.shadow = this.attachShadow({mode: 'open'})
+  }
+
+  attributeChangedCallback () {
+    this.shadow.innerHTML = template(this.phrase)
+  }
+
+  set phrase (value) {
+    this.setAttribute('phrase', value)
+  }
+
+  get phrase () {
+    return this.getAttribute('phrase')
   }
 }
 

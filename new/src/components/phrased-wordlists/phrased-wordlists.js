@@ -55,7 +55,10 @@ class PhrasedWordlists extends window.HTMLElement {
     this.shadow.innerHTML = '<ul><slot id="list"></slot></ul>'
     this.observeSelectorChanges()
     if (!this.selection) {
-      this.selection = this.querySelector('phrased-wordlist-selector').wordlist_key
+      let firstChild = this.querySelector('phrased-wordlist-selector')
+      if (firstChild) {
+        this.selection = firstChild.wordlist_key
+      }
     }
   }
 
@@ -66,6 +69,9 @@ class PhrasedWordlists extends window.HTMLElement {
           mutation.addedNodes.forEach((addedNode) => {
             if (addedNode.localName === 'phrased-wordlist-selector') {
               this.wordlistSelectorAdded(addedNode)
+              if (!this.selection) {
+                this.selection = addedNode.wordlist_key
+              }
             }
           })
         }
@@ -82,13 +88,16 @@ class PhrasedWordlists extends window.HTMLElement {
 
   attributeChangedCallback () {
     this.querySelectorAll('phrased-wordlist-selector').forEach((e) => {
-      console.log(e, e.wordlist_key)
       if (e.wordlist_key === this.selection) {
         e.setAttribute('selected', '')
       } else {
         e.removeAttribute('selected')
       }
     })
+    this.dispatchEvent(new window.CustomEvent(
+      'selected',
+      {detail: {wordlist_key: this.selection}}
+    ))
   }
 
   set selection (value) {
