@@ -15,7 +15,7 @@ phrased-wordlists li {
 
 phrased-wordlists phrased-wordlist-selector[selected] a {
   color: lightblue;
-  border: 1px solid lightblue;
+  border: 3px solid lightblue;
 }
 
 phrased-wordlists a {
