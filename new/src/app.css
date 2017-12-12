@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans');
 @import 'components/phrased-passphrase/phrased-passphrase.css';
+@import 'components/phrased-wordlists/phrased-wordlists.css';
 
 body {
   background-color: white;
   font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
 }
 
 .container {
@@ -15,10 +17,10 @@ body {
 
 .container h1 {
   flex-basis: 100%;
-  margin: 4rem 0;
+  margin: 1rem 0 3rem 0;
 
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 phrased-passphrase {
@@ -28,7 +30,7 @@ phrased-passphrase {
   margin-bottom: 2rem;
 }
 
-phrased-language-picker, phrased-dictionary-picker, phrased-phrase-settings {
-  flex-grow: 1;
+phrased-wordlists {
+  flex-grow: 3;
   margin: 1rem;
 }

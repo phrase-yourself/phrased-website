@@ -29,7 +29,6 @@
     "postcss": "^6.0.14",
     "postcss-cli": "^4.1.1",
     "postcss-cssnext": "^3.0.2",
-    "postcss-easy-import": "^3.0.0",
     "postcss-import": "^11.0.0",
     "watchify": "^3.9.0"
   }
