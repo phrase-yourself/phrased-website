@@ -13,7 +13,7 @@ phrased-wordlists li {
   margin: 1rem;
 }
 
-phrased-wordlists li.selected a {
+phrased-wordlists phrased-wordlist-selector[selected] a {
   color: lightblue;
   border: 1px solid lightblue;
 }

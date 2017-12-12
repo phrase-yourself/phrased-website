@@ -1,49 +1,102 @@
-let applyTemplate = (list, template) => {
-  return list.map((element) => template(element)).join('')
-}
+class PhrasedWordlistSelector extends window.HTMLElement {
+  static get observedAttributes () {
+    return ['selected', 'wordlist-key']
+  }
 
-let wordlistLink = (wordlist) => {
-  let className = wordlist.active ? 'selected' : ''
-  return `
-    <li class="${className}">
-      <a
-        class="wordlist-selector"
-        href="#"
-        wordlist-key="${wordlist.key}">
-        ${wordlist.name}
-      </a>
-    </li>`
-}
-
-let template = (wordlists) => {
-  return `
-    <ul>
-      ${applyTemplate(wordlists, wordlistLink)}
-    </ul>
-  `
-}
-
-class PhrasedWordlists extends window.HTMLElement {
   constructor () {
     super()
-    let shadow = this.attachShadow({mode: 'open'})
-    shadow.innerHTML = template([
-      {key: 'eff-shortlist', name: 'EFF Shortlist'},
-      {key: 'lord-of-the-rings', name: 'Lord of the Rings', active: true},
-      {key: 'original-diceware', name: 'Original Diceware'},
-      {key: 'animals', name: 'Animals'}
-    ])
-    shadow.querySelectorAll('a.wordlist-selector').forEach((a) => {
-      a.addEventListener('click', (evt) => {
-        let event = new CustomEvent(
-          'WordlistSelected',
-          {detail: {key: a.getAttribute('wordlist-key')}}
-        )
-        console.log(a, event)
-        this.dispatchEvent(event)
-        evt.preventDefault()
+    this.shadow = this.attachShadow({mode: 'open'})
+    this.shadow.innerHTML = `
+      <li>
+        <a href="#">
+          <slot></slot>
+        </a>
+      </li>`
+    this.shadow.querySelector('a').addEventListener('click', (evt) => {
+      this.dispatchEvent(new window.CustomEvent(
+        'selected',
+        {detail: {wordlist_key: this.wordlist_key}}
+      ))
+      evt.preventDefault()
+    })
+  }
+
+  set selected (value) {
+    if (value) {
+      this.setAttribute('selected', '')
+    } else {
+      this.removeAttribute('selected')
+    }
+  }
+
+  get selected () {
+    return this.hasAttribute('selected')
+  }
+
+  set wordlist_key (value) {
+    this.setAttribute('wordlist-key', value)
+  }
+
+  get wordlist_key () {
+    return this.getAttribute('wordlist-key')
+  }
+}
+
+window.customElements.define('phrased-wordlist-selector', PhrasedWordlistSelector)
+
+class PhrasedWordlists extends window.HTMLElement {
+  static get observedAttributes () {
+    return ['selection']
+  }
+
+  constructor () {
+    super()
+    this.shadow = this.attachShadow({mode: 'open'})
+    this.shadow.innerHTML = '<ul><slot id="list"></slot></ul>'
+    this.observeSelectorChanges()
+    if (!this.selection) {
+      this.selection = this.querySelector('phrased-wordlist-selector').wordlist_key
+    }
+  }
+
+  observeSelectorChanges () {
+    new window.MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if ('addedNodes' in mutation) {
+          mutation.addedNodes.forEach((addedNode) => {
+            if (addedNode.localName === 'phrased-wordlist-selector') {
+              this.wordlistSelectorAdded(addedNode)
+            }
+          })
+        }
       })
     })
+    .observe(this, {childList: true, subtree: true})
+  }
+
+  wordlistSelectorAdded (selector) {
+    selector.addEventListener('selected', (evt) => {
+      this.selection = evt.detail.wordlist_key
+    })
+  }
+
+  attributeChangedCallback () {
+    this.querySelectorAll('phrased-wordlist-selector').forEach((e) => {
+      console.log(e, e.wordlist_key)
+      if (e.wordlist_key === this.selection) {
+        e.setAttribute('selected', '')
+      } else {
+        e.removeAttribute('selected')
+      }
+    })
+  }
+
+  set selection (value) {
+    this.setAttribute('selection', value)
+  }
+
+  get selection () {
+    return this.getAttribute('selection')
   }
 }
 
