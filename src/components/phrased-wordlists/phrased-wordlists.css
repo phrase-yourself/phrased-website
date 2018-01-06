@@ -3,9 +3,10 @@ phrased-wordlists {
 
 phrased-wordlists ul {
   width: 100%;
+  max-width: 20rem;
   text-align: center;
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -13,18 +14,22 @@ phrased-wordlists li {
   margin: 1rem;
 }
 
-phrased-wordlists phrased-wordlist-selector[selected] a {
-  color: lightblue;
-  border: 3px solid lightblue;
-}
-
-phrased-wordlists a {
+phrased-wordlists phrased-wordlist-selector a {
+  display: block;
+  width: 100%;
   font-size: 1.5rem;
-  color: black;
   text-decoration: none;
-  padding: 0.5rem;
+  padding: 0.5rem 0 0.5rem 0;
+  color: darkgray;
+  background-color: #eee;
 }
 
-phrased-wordlists a:hover {
-  color: lightblue;
+phrased-wordlists phrased-wordlist-selector a:hover {
+  color: white;
+  background-color: #4fc1e6;
+}
+
+phrased-wordlists phrased-wordlist-selector[selected] a {
+  color: white;
+  background-color: #4fc1e6;
 }
