@@ -6,6 +6,7 @@ phrased-passphrase {
 phrased-passphrase span {
   border-bottom: 3px solid lightblue;
   padding: 0.1em 0;
+  line-height: 1.5em;
 }
 
 phrased-passphrase span.phrased-passphrase-pending {

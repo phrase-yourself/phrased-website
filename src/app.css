@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -17,20 +17,27 @@ body {
 
 .container h1 {
   flex-basis: 100%;
-  margin: 1rem 0 3rem 0;
+  margin: 0;
 
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
+}
+
+.container h2 {
+  flex-basis: 100%;
+  margin: 0;
+
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 phrased-passphrase {
   font-family: 'Inconsolata', monospace;
   flex-basis: 100%;
   flex-grow: 3;
-  margin-bottom: 2rem;
+  margin: 3rem;
 }
 
 phrased-wordlists {
   flex-grow: 3;
-  margin: 1rem;
 }
