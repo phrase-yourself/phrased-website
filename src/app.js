@@ -14,7 +14,9 @@ window.addEventListener('WebComponentsReady', () => {
   })
 
   wordlists.addEventListener('selected', (wordlist) => {
+    passphrase.pending = true
     phrased.generate(wordlist.detail.wordlist_key, 5).then((phrase) => {
+      passphrase.pending = false
       passphrase.phrase = phrase
     })
   })

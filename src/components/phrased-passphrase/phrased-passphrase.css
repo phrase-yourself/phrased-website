@@ -8,3 +8,8 @@ phrased-passphrase span {
   padding: 0.1em 0;
 }
 
+phrased-passphrase span.phrased-passphrase-pending {
+  border-color: lightgrey;
+  color: lightgrey;
+}
+
