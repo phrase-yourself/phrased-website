@@ -71,6 +71,8 @@ class PhrasedWordlists extends window.HTMLElement {
               this.wordlistSelectorAdded(addedNode)
               if (!this.selection) {
                 this.selection = addedNode.wordlist_key
+              } else if (this.selection === addedNode.wordlist_key) {
+                addedNode.selected = true
               }
             }
           })
