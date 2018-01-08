@@ -1,0 +1,27 @@
+language-picker {
+}
+
+language-picker ul {
+  list-style: none;
+}
+
+language-picker li {
+  display: inline;
+}
+
+language-picker language-selector a {
+  text-decoration: none;
+  color: darkgray;
+  background-color: #eee;
+  padding: 0.5rem;
+}
+
+language-picker language-selector a:hover {
+  color: white;
+  background-color: #4fc1e6;
+}
+
+language-picker language-selector[selected] a {
+  color: white;
+  background-color: #4fc1e6;
+}

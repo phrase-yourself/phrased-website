@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans');
 @import 'components/phrased-passphrase/phrased-passphrase.css';
 @import 'components/phrased-wordlists/phrased-wordlists.css';
+@import 'components/language-picker/language-picker.css';
 
 body {
   background-color: white;
