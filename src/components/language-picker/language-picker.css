@@ -1,12 +1,5 @@
-language-picker {
-}
-
-language-picker ul {
-  list-style: none;
-}
-
-language-picker li {
-  display: inline;
+language-picker > * {
+  padding: 0.5rem 0;
 }
 
 language-picker language-selector a {

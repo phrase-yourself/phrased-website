@@ -7,11 +7,9 @@ class LanguageSelector extends window.HTMLElement {
     super()
     this.shadow = this.attachShadow({mode: 'open'})
     this.shadow.innerHTML = `
-      <li>
-        <a href="#">
-          <slot></slot>
-        </a>
-      </li>`
+      <a href="#">
+        <slot></slot>
+      </a>`
     this.shadow.querySelector('a').addEventListener('click', (evt) => {
       this.dispatchEvent(new window.CustomEvent(
         'selected',
@@ -53,7 +51,7 @@ class LanguagePicker extends window.HTMLElement {
     super()
     this.shadow = this.attachShadow({mode: 'open'})
     this.observeSelectorChanges()
-    this.shadow.innerHTML = '<ul><slot id="list"></slot></ul>'
+    this.shadow.innerHTML = '<slot id="list"></slot>'
     if (!this.selection) {
       let firstChild = this.querySelector('language-selector')
       if (firstChild) {
