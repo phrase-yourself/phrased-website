@@ -4,7 +4,8 @@ let template = (phrase, isPending) => {
     <div class="phrased-passphrase-phrase">
       <span class="${spanClass}">${phrase}</span>
     </div>
-  `
+  `.replace(/^\s+/gm, '')
+   .replace(/\r?\n|\r/g, '')
 }
 
 class PhrasedPassphrase extends window.HTMLElement {
