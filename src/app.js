@@ -1,21 +1,25 @@
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js'
 import '@webcomponents/webcomponentsjs'
-import i18n from './i18n.js'
-import './components/phrased-passphrase/phrased-passphrase.js'
-import './components/phrased-wordlists/phrased-wordlists.js'
-import './components/language-picker/language-picker.js'
-import phrased from 'phrased'
-
-function fillWordlists (wordlists, lang) {
-  wordlists.innerHTML = ''
-  phrased.wordlistsByLanguage(lang).forEach((wordlist) => {
-    let list = document.createElement('phrased-wordlist-selector')
-    list.setAttribute('wordlist-key', wordlist.key)
-    list.innerHTML = wordlist.name
-    wordlists.appendChild(list)
-  })
-}
 
 window.addEventListener('WebComponentsReady', () => {
+  console.log('sad')
+
+  const i18n = require('./i18n.js')
+  const phrased = require('phrased')
+  require('./components/phrased-passphrase/phrased-passphrase.js')
+  require('./components/phrased-wordlists/phrased-wordlists.js')
+  require('./components/language-picker/language-picker.js')
+
+  function fillWordlists (wordlists, lang) {
+    wordlists.innerHTML = ''
+    phrased.wordlistsByLanguage(lang).forEach((wordlist) => {
+      let list = document.createElement('phrased-wordlist-selector')
+      list.setAttribute('wordlist-key', wordlist.key)
+      list.innerHTML = wordlist.name
+      wordlists.appendChild(list)
+    })
+  }
+
   let languagePicker = document.querySelector('language-picker')
   let passphrase = document.querySelector('phrased-passphrase')
   let wordlists = document.querySelector('phrased-wordlists')
