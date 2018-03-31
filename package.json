@@ -9,6 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "webcomponents.js": "^0.7.24"
+    "@webcomponents/webcomponentsjs": "^1.1.1",
+    "grunt": "^1.0.2",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
   }
 }
