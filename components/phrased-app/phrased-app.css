@@ -1,3 +1,9 @@
+@import '/components/variables.css';
+
+a {
+    color: var(--mainColor);
+}
+
 .phrased-app {
   color: yellow;
   background-color: pink;
