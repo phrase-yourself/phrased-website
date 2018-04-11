@@ -21,7 +21,7 @@ dist/%.js: %.js
 	mkdir -p $(dir $@)
 	$(browserify) -t [ babelify --presets [ env ] ] $< -o $@
 
-dist/%.css: %.css
+dist/%.css: %.css components/*.css
 	mkdir -p $(dir $@)
 	$(postcss) $< -o $@
 
