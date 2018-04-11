@@ -10,23 +10,23 @@ lib = dist/lib/webcomponents-lite.js dist/lib/custom-elements-es5-adapter.js
 
 dist/lib/webcomponents-lite.js: node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js
 	mkdir -p $(dir $@)
-	cp $^ $@
+	cp $< $@
 
 dist/lib/custom-elements-es5-adapter.js: node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js
 	mkdir -p $(dir $@)
-	cp $^ $@
+	cp $< $@
 ##############################################
 
 dist/%.js: %.js
 	mkdir -p $(dir $@)
-	$(browserify) -t [ babelify --presets [ env ] ] $^ -o $@
+	$(browserify) -t [ babelify --presets [ env ] ] $< -o $@
 
 dist/%.css: %.css
 	mkdir -p $(dir $@)
-	$(postcss) $^ -o $@
+	$(postcss) $< -o $@
 
 dist/%.html: %.html
 	mkdir -p $(dir $@)
-	cp $^ $@
+	cp $< $@
 
 dist: $(dist) $(lib)
