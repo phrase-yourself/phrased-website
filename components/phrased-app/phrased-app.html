@@ -1,8 +1,17 @@
-<template id="template">
-<link rel="stylesheet" href="/components/phrased-app/phrased-app.css">
-<div class="phrased-app">
-This is the phrased app!
-</div>
-</template>
-<script src="/components/phrased-app/phrased-app.js"></script>
+<link rel="import" href="/components/phrased-phrase/phrased-phrase.html">
+<link rel="import" href="/components/phrased-wordlist/phrased-wordlist.html">
+<link rel="import" href="/components/phrased-wordlists/phrased-wordlists.html">
 
+<template id="phrased-app-template">
+  <link rel="stylesheet" href="/components/phrased-app/phrased-app.css">
+  <div class="phrased-app">
+    <h2>This is the phrased app!</h2>
+    <phrased-phrase></phrased-phrase>
+    <phrased-wordlists>
+      <phrased-wordlist name="literature-de">Klassische Literatur (DE)</phrased-wordlist>
+      <phrased-wordlist name="literature-en">Classical Literature (EN)</phrased-wordlist>
+    </phrased-wordlists>
+  </div>
+</template>
+
+<script src="/components/phrased-app/phrased-app.js"></script>
