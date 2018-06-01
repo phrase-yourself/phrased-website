@@ -13,8 +13,8 @@ class PhrasedApp extends window.HTMLElement {
   }
 
   connectedCallback () {
-    this.root.appendChild(template())
-  }
+      this.root.appendChild(template())
+     }
 }
 
 window.customElements.define('phrased-app', PhrasedApp)
