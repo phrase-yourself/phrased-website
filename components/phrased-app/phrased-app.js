@@ -18,7 +18,7 @@ class PhrasedApp extends window.HTMLElement {
     this.root.addEventListener('wordlist-selected', (evt) => {
       console.log('hello', evt.detail)
       phrased.generate(evt.detail.name, 5).then((phrase) => {
-        console.log(phrase)
+        this.root.querySelector('phrased-phrase').innerHTML = phrase
       })
     })
   }
