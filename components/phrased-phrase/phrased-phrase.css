@@ -1,6 +1,4 @@
-@import '/components/variables.css';
-
 .phrased-phrase {
-  color: var(--mainColor);
+  color: lightcoral;
   background-color: blue;
 }

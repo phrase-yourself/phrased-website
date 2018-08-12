@@ -1,6 +1,4 @@
-@import '/components/variables.css';
-
 .phrased-app {
   color: yellow;
-  background-color: var(--mainColor);
+  background-color: lightcoral;
 }

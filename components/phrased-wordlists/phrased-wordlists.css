@@ -1,6 +1,4 @@
-@import '/components/variables.css';
-
 .phrased-wordlists {
-  color: var(--mainColor);
+  color: lightcoral;
   background-color: green;
 }
