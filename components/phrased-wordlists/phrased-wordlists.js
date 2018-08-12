@@ -21,6 +21,7 @@ class PhrasedWordlists extends window.HTMLElement {
       list.innerHTML = wordlist.name + ' (' + wordlist.languages.join(', ') + ')'
       this.root.host.appendChild(list)
     })
+    this.root.host.querySelector('phrased-wordlist').triggerSelection()
   }
 }
 

@@ -16,14 +16,18 @@ class PhrasedWordlist extends window.HTMLElement {
     this.root.appendChild(template())
     this.root.addEventListener('click', (evt) => {
       evt.preventDefault()
-      this.dispatchEvent(new window.CustomEvent(
-        'wordlist-selected',
-        {
-          bubbles: true,
-          detail: {name: this.name}
-        }
-      ))
+      this.triggerSelection()
     })
+  }
+
+  triggerSelection () {
+    this.dispatchEvent(new window.CustomEvent(
+      'wordlist-selected',
+      {
+        bubbles: true,
+        detail: {name: this.name}
+      }
+    ))
   }
 
   set name (value) {
