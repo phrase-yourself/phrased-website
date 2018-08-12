@@ -15,7 +15,7 @@ class PhrasedApp extends window.HTMLElement {
   connectedCallback () {
     this.root.appendChild(template())
     this.root.addEventListener('wordlist-selected', (evt) => {
-      console.log('hello', evt)
+      console.log('hello', evt.detail)
     })
   }
 }

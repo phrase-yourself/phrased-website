@@ -10,8 +10,12 @@ class PhrasedWordlist extends window.HTMLElement {
   constructor () {
     super()
     this.root = this.attachShadow({mode: 'open'})
+  }
+
+  connectedCallback () {
+    this.root.appendChild(template())
     this.root.addEventListener('click', (evt) => {
-      console.log('lol')
+      evt.preventDefault()
       this.dispatchEvent(new window.CustomEvent(
         'wordlist-selected',
         {
@@ -19,12 +23,15 @@ class PhrasedWordlist extends window.HTMLElement {
           detail: {name: this.name}
         }
       ))
-      evt.preventDefault()
     })
   }
 
-  connectedCallback () {
-    this.root.appendChild(template())
+  set name (value) {
+    this.setAttribute('name', value)
+  }
+
+  get name () {
+    return this.getAttribute('name')
   }
 }
 
