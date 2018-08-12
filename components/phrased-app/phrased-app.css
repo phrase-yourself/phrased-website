@@ -1,4 +1,4 @@
 .phrased-app {
-  color: yellow;
-  background-color: lightcoral;
+  display: block;
+  text-align: center;
 }

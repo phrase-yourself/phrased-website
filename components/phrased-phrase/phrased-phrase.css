@@ -1,4 +1,6 @@
 .phrased-phrase {
-  color: lightcoral;
-  background-color: blue;
+  border-bottom: 2px solid blue;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0.5em;
 }
