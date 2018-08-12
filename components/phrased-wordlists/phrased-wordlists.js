@@ -16,10 +16,10 @@ class PhrasedWordlists extends window.HTMLElement {
   connectedCallback () {
     this.root.appendChild(template())
     phrased.wordlists().forEach((wordlist) => {
-	let list = document.createElement('phrased-wordlist')
-	list.setAttribute('name', wordlist.key)
-	list.innerHTML = wordlist.name + ' (' + wordlist.languages.join(', ') + ')'
-	this.root.host.appendChild(list)
+      let list = document.createElement('phrased-wordlist')
+      list.setAttribute('name', wordlist.key)
+      list.innerHTML = '<a href="#">' + wordlist.name + ' (' + wordlist.languages.join(', ') + ')</a>'
+      this.root.host.appendChild(list)
     })
   }
 }
