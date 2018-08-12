@@ -1,32 +1,25 @@
 browserify = ./node_modules/.bin/browserify
-postcss = ./node_modules/.bin/postcss
 
-src = $(wildcard components/**/*) index.html
+src = $(wildcard components/**/*) $(wildcard lib/*) index.html
 dist = $(addprefix dist/,$(src))
 
-##############################################
-# TODO: How to make this more generic?
-lib = dist/lib/webcomponents-lite.js dist/lib/custom-elements-es5-adapter.js
+dist: $(dist)
 
-dist/lib/webcomponents-lite.js: node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js
-	mkdir -p $(dir $@)
-	cp $< $@
+@phony:
+clean:
+	rm -fr dist
 
-dist/lib/custom-elements-es5-adapter.js: node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js
-	mkdir -p $(dir $@)
-	cp $< $@
-##############################################
+## Rules
 
 dist/%.js: %.js
 	mkdir -p $(dir $@)
 	$(browserify) -t [ babelify --presets [ env ] ] $< -o $@
 
-dist/%.css: %.css components/*.css
-	mkdir -p $(dir $@)
-	$(postcss) $< -o $@
-
-dist/%.html: %.html
+dist/lib/%.js: lib/%.js
 	mkdir -p $(dir $@)
 	cp $< $@
 
-dist: $(dist) $(lib)
+dist/%: %
+	mkdir -p $(dir $@)
+	cp $< $@
+
