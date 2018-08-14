@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dist": "make dist",
+    "watch": "while git ls-files |xargs inotifywait; do make dist; done",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "mkdir -p lib; cp node_modules/@webcomponents/webcomponentsjs/{custom-elements-es5-adapter.js,webcomponents-lite.js} lib"
   },
