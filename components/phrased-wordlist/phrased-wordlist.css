@@ -1,3 +1,15 @@
 .phrased-wordlist {
+  margin-bottom: 0.5em;
+}
+
+.phrased-wordlist a {
   color: black;
+}
+
+.phrased-wordlist a:hover {
+  color: blue;
+}
+
+.phrased-wordlist[selected] a {
+  color: blue;
 }

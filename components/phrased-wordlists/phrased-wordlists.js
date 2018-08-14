@@ -15,6 +15,14 @@ class PhrasedWordlists extends window.HTMLElement {
 
   connectedCallback () {
     this.root.appendChild(template())
+    this.root.addEventListener('wordlist-selected', (evt) => {
+      const selectedName = evt.detail.name
+      this.selectedName = selectedName
+      this.root.host.querySelectorAll('phrased-wordlist').forEach((e) => {
+        e.deselect()
+      })
+      this.root.host.querySelector('phrased-wordlist[name=' + selectedName + ']').select()
+    })
     phrased.wordlists().forEach((wordlist) => {
       let list = document.createElement('phrased-wordlist')
       list.setAttribute('name', wordlist.key)
@@ -22,6 +30,14 @@ class PhrasedWordlists extends window.HTMLElement {
       this.root.host.appendChild(list)
     })
     this.root.host.querySelector('phrased-wordlist').triggerSelection()
+  }
+
+  set selectedName (value) {
+    this.setAttribute('selected-name', value)
+  }
+
+  get selectedName () {
+    return this.getAttribute('selected-name')
   }
 }
 
