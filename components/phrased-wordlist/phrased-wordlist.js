@@ -32,7 +32,7 @@ class PhrasedWordlist extends window.HTMLElement {
     if (this.root.innerHTML === '') {
       this.root.innerHTML = template(this)
     }
-    const e = this.root.querySelector('.phrased-wordlist')
+    const e = this.root.querySelector('div.phrased-wordlist')
     e.setAttribute('name', this.name)
     if (this.selected) {
       e.setAttribute('selected', '')
